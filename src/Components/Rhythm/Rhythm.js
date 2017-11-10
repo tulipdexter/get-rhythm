@@ -15,10 +15,6 @@ import Bar from "../Bar/Bar";
  */
 
 export default class Rhythm extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render () {
         if (this.props.sounds.length) {
             return (
@@ -27,9 +23,7 @@ export default class Rhythm extends Component {
                     <div>
                         <button>Play</button>
                     </div>
-                    <div>
-                        <Bar />
-                    </div>
+                    <Bar />
                 </div>
             );
         } else {

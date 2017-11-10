@@ -1,8 +1,12 @@
 .c-bar {
     max-width: 300px;
+    
+}
+
+.c-bar__row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /** 20 grid column */
-    grid-template-rows: 12px 12px 12px 12px 12px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 12px;
 }
 
 .c-bar__cell {
