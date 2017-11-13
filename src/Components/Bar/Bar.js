@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Cell from './Cell';
-import Cymbal from './Cymbal';
+import Note from './Note';
 // import randomInteger from '../../Services/randomInteger';
 import './Bar.css';
 
@@ -11,13 +12,44 @@ export default class Bar extends React.Component {
     //         cells: []
     //     };
     // }
+    static propTypes = {
+        notePosition: PropTypes.arrayOf(
+            // https://reactjs.org/docs/typechecking-with-proptypes.html
+            // array of a certain type (number)
+            // You can chain any of the above with `isRequired` 
+            // to make sure a warning is shown if the prop isn't provided.
+            PropTypes.number.isRequired
+        ).isRequired
+    };
+
+    renderCell(i) {
+        const x = i % 8;
+        const y = Math.floor(i / 8);
+
+        const [noteX, noteY] = this.props.notePosition;
+        // If x and y are equal to the props passed in, render the note
+        const note = (x === noteX && y === noteY) ? <Note /> : null;
+
+        <div key={i}
+             style={{ width: '12.5%', height: '12.5%' }}>
+            <Cell>
+                {note}
+            </Cell>
+        </div>
+    }
 
     render() {
+        let cells = [];
+
+        for (let i = 0; i < 64; i++) {
+            cells.push(this.renderCell(i))
+        }
+
+        console.log(cells); // Returns 64 undefined.
+
         return (
             <div className="Bar">
-                <Cell>
-                    <Cymbal />
-                </Cell>
+                {cells}
             </div>
         )
     }
