@@ -23,7 +23,7 @@ export default class Rhythm extends Component {
                     <div>
                         <button>Play</button>
                     </div>
-                    <Bar notePosition={[0,0]}/>
+                    <Bar notePosition={[3,2]}/>
                 </div>
             );
         } else {

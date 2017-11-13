@@ -1,17 +1,22 @@
-.c-bar {
-    max-width: 300px;
-    
-}
-
-.c-bar__row {
+.bar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 12px;
+    grid-template-rows: 12px 12px 12px 12px 12px 12px 12px 12px;
+    max-width: 300px;
 }
 
-.c-bar__cell {
+.bar__cell {
     width: 100%;
     height: 100%;
     background-color: #f4f4f4;
     border: 1px solid #ececec;
+}
+
+.note {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: black;
 }

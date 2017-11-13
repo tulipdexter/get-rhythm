@@ -30,25 +30,28 @@ export default class Bar extends React.Component {
         // If x and y are equal to the props passed in, render the note
         const note = (x === noteX && y === noteY) ? <Note /> : null;
 
-        <div key={i}
-             style={{ width: '12.5%', height: '12.5%' }}>
-            <Cell>
-                {note}
-            </Cell>
-        </div>
+        console.log(note); // first item in array is a React symbol, all others are null.
+
+        return (
+            <div key={i} className="bar__cell">
+                <Cell>
+                    {note}
+                </Cell>
+            </div>
+        )
     }
 
     render() {
+        const rows = 5;
+        const cols = 8;
         let cells = [];
 
-        for (let i = 0; i < 64; i++) {
+        for (let i = 0; i < (rows * cols); i++) {
             cells.push(this.renderCell(i))
         }
 
-        console.log(cells); // Returns 64 undefined.
-
         return (
-            <div className="Bar">
+            <div className="bar">
                 {cells}
             </div>
         )
