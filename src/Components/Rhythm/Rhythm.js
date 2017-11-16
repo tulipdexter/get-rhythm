@@ -23,7 +23,7 @@ export default class Rhythm extends Component {
                     <div>
                         <button>Play</button>
                     </div>
-                    <Bar notePosition={[3,2]}/>
+                    <Bar notePosition={[3,2]}/> {/* This outputs a whole bar. So doesn't allow for multiple notes in a bar. */}
                 </div>
             );
         } else {
