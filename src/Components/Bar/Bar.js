@@ -31,10 +31,10 @@ export default class Bar extends React.Component {
         const x = i % 8;
         const y = Math.floor(i / 5);
 
-         function renderNote(noteCoords, index) {
+        function renderNote(noteCoords, index) {
             const [noteX, noteY] = noteCoords; // compiles down to two variables, noteX and noteY with the corresponding values from props.
-            return (x === noteX && y === noteY) ? <Note key={index} /> : null; // coords  // {TODO} - Needs a key
-         }
+            return (x === noteX && y === noteY) ? <Note key={index} /> : null; // coords
+        }
 
         return (
             <Cell key={i}>
