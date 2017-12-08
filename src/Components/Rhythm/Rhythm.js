@@ -27,7 +27,7 @@ export default class Rhythm extends Component {
                     <div>
                         <button>Play</button>
                     </div>
-                    <Bar notePositions={[[3,2], [1,3]]}/>
+                    <Bar notePositions={[[3,2], [1,3]]}/> {/* TODO: Y coords seem to start at 1, not 0 */}
                 </div>
             );
         } else {

@@ -31,19 +31,18 @@ export default class Bar extends React.Component {
          */
         const x = i % 8;
         const y = Math.floor(i / 5);
-        const notePositionsArray = this.props.notePositions;
-        let notes = [];
 
-        for (let j = 0; j < notePositionsArray.length; j++) {
-            const currentNotePosition = notePositionsArray[j]
-            const [noteX, noteY] = currentNotePosition; // compiles down to two variables, noteX and noteY with the corresponding values from props.
-            const note = (x === noteX && y === noteY) ? <Note /> : null; // coords  // {TODO} - Needs a key
-
-            notes.push(<Cell>{note}</Cell>);
-        }
+         function renderNote(noteCoords, index) {
+            const [noteX, noteY] = noteCoords; // compiles down to two variables, noteX and noteY with the corresponding values from props.
+            return (x === noteX && y === noteY) ? <Note key={index} /> : null; // coords  // {TODO} - Needs a key
+         }
 
         return (
-            notes
+            <Cell key={i}>
+                {this.props.notePositions.map((notePosition, index) => (
+                    renderNote(notePosition, index)
+                ))}
+            </Cell>
         )
     }
 
