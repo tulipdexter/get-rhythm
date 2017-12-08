@@ -14,16 +14,9 @@ export default class Bar extends React.Component {
          * to make sure a warning is shown if the prop isn't provided.
          * PropTypes.number.isRequired
          */
-        notePosition: PropTypes.arrayOf(Array
+        notePositions: PropTypes.arrayOf(Array
         ).isRequired
     };
-
-    test() {
-        for (let j = 0; j < this.props.notePosition.length; j++) {
-            console.log(j); // logs correctly (0, 1);
-            console.log(this.props.notePosition[j]); // logs correctly first array, second array
-        }
-    }
 
     renderCell(i) {
         /**
@@ -38,51 +31,19 @@ export default class Bar extends React.Component {
          */
         const x = i % 8;
         const y = Math.floor(i / 5);
+        const notePositionsArray = this.props.notePositions;
+        let notes = [];
 
-        // this logs 40 times due to the for loop called above (looping through each cell);
-        // The loop above (looping through the grid) has to happen, as that is what is generating
-        // the grid cells.  It always returns a cell, but someimtes the cell contains a note.
-        // So the for loop for the array SHOULD be in here.
-        // Loop through the number cells to be made, and for each one, loop through the properties
-        // in the array and pass create a cell with that note if it matches.
-        // Because you need to check whether for each cell, does it match any of the coords.
+        for (let j = 0; j < notePositionsArray.length; j++) {
+            const currentNotePosition = notePositionsArray[j]
+            const [noteX, noteY] = currentNotePosition; // compiles down to two variables, noteX and noteY with the corresponding values from props.
+            const note = (x === noteX && y === noteY) ? <Note /> : null; // coords  // {TODO} - Needs a key
 
-        // console.log(this.props.notePosition.length);
-
-        // console.log(this.props.notePosition.length); // 2.
-
-        for (let j = 0; j < this.props.notePosition.length; j++) {
-            console.log(`loop number is ${j}`);
-            console.log(this.props.notePosition[j]);
-
-            const [noteX, noteY] = this.props.notePosition[j]; // compiles down to two variables, noteX and noteY with the corresponding values from props.
-            console.log(noteX, noteY); // logs correctly
-            
-            const note = (x === noteX && y === noteY) ? <Note /> : null;
-            console.log(note); // logs 2 notes (react.element)
-
-            // need some kind of a 'buildHtml' function here
-            // or appendNote function
+            notes.push(<Cell>{note}</Cell>);
         }
 
-        function buildHtml(note) {
-            if (note) {
-                <Cell>
-                    {/*note*/}
-                </Cell>
-            }
-        }
-
-        // maybe this should build the cells, not render them
-        // once completely built, then render?
-
-        //this would end up like <div class="bla">{html}</div>
         return (
-            <div key={i} className="bar__cell">
-                <Cell>
-                    {/*note*/}
-                </Cell>
-            </div>
+            notes
         )
     }
 
@@ -97,15 +58,8 @@ export default class Bar extends React.Component {
         const rows = 5;
         let cells = [];
 
-        // for (let j = 0; j < this.props.notePosition.length; j++) {
-        //     console.log(j); // logs correctly (0, 1);
-        //     console.log(this.props.notePosition[j]); // logs correctly first array, second array
-        // }
-
-        // this.test();
-
         for (let i = 0; i < (rows * cols); i++) {
-            cells.push(this.renderCell(i)); // this is the function call, and where the logs are spat out many times
+            cells.push(this.renderCell(i));
         }
 
         return (
@@ -115,3 +69,13 @@ export default class Bar extends React.Component {
         )
     }
 }
+
+/**
+ * It loops through the number of cells you want in a grid.
+ * For each of those, it calls a function.
+ * That function returns the HTML that should make up that cell.
+ * Some cells just have a div, others have a div that contains a note.
+ * The complication is that to determine whether there's a note or not
+ * you have to loop through a second array (of note coords).
+ * If any of those coords match a cell, then it should get a note.
+ */
