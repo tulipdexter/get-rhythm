@@ -6,12 +6,16 @@ import Bar from "../Bar/Bar";
  * then make it another container (or hoist data shit up 
  * into RhythmContainer (where most data comes from anyway))
  * 
- * Question is, what should render the bar HTML?
- * 
  * Currently this is generating a single bar.  I could pass a config through from RhythmContainer and loop through that number?
  * That will ultimately allow the state to change based on an 'addition' of a bar which will cause a re-render.
- * 
- * Question: should bar be a separate container?
+ *
+ */
+
+/**
+ * Outputs a bar with a single co-ordinate for a note
+ * But we need to pass through lots of notes, so this won't work.
+ * Need to be able to say <Bar>{notes}</Bar> I think then notes does can out put mutiple notes.
+ * So {notes} becomes and array of arrays.  [[6,6],[4,3]] etc etc.
  */
 
 export default class Rhythm extends Component {
@@ -23,7 +27,7 @@ export default class Rhythm extends Component {
                     <div>
                         <button>Play</button>
                     </div>
-                    <Bar notePosition={[3,2]}/> {/* This outputs a whole bar. So doesn't allow for multiple notes in a bar. */}
+                    <Bar notePosition={[[3,2], [1,3]]}/>
                 </div>
             );
         } else {
