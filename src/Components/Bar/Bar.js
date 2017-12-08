@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Cell from './Cell';
 import Note from './Note';
-// import randomInteger from '../../Services/randomInteger';
 import './Bar.css';
 
 export default class Bar extends React.Component {
@@ -68,13 +67,3 @@ export default class Bar extends React.Component {
         )
     }
 }
-
-/**
- * It loops through the number of cells you want in a grid.
- * For each of those, it calls a function.
- * That function returns the HTML that should make up that cell.
- * Some cells just have a div, others have a div that contains a note.
- * The complication is that to determine whether there's a note or not
- * you have to loop through a second array (of note coords).
- * If any of those coords match a cell, then it should get a note.
- */
