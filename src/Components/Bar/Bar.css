@@ -1,22 +1,30 @@
-.bar {
+/** TODO: Add sass to allow vars for calculations of the widths etc based on the note (or try CSS vars or post-css) **/
+/* .bar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 12px 12px 12px 12px 12px;
-    max-width: 300px;
+    grid-template-rows: 9px 9px 9px 9px 9px;
+    max-width: 81px;
+} */
+
+.bar {
+    max-width: 50%;
 }
 
+.bar__grid {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* 
 .bar__cell {
     width: 100%;
     height: 100%;
     background-color: #f4f4f4;
     border: 1px solid #d4d4d4;
-}
+} */
 
-.note {
-    display: block;
-    width: 10px;
-    height: 10px;
-    margin: auto;
-    border-radius: 50%;
-    background-color: black;
-}
+/** 
+  The actual stave needs to overlay this grid,
+  so you only know this grid exists when you try
+  to drop a note into it.
+**/
