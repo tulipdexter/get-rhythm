@@ -11,13 +11,6 @@ import Bar from "../Bar/Bar";
  *
  */
 
-/**
- * Outputs a bar with a single co-ordinate for a note
- * But we need to pass through lots of notes, so this won't work.
- * Need to be able to say <Bar>{notes}</Bar> I think then notes does can out put mutiple notes.
- * So {notes} becomes and array of arrays.  [[6,6],[4,3]] etc etc.
- */
-
 export default class Rhythm extends Component {
     render () {
         if (this.props.sounds.length) {
@@ -27,7 +20,23 @@ export default class Rhythm extends Component {
                     <div>
                         <button>Play</button>
                     </div>
-                    <Bar notePositions={[[3,2], [1,3], [1,2]]}/> {/* TODO: Y coords seem to start at 1, not 0 */}
+                    <Bar barNotes={[
+                        {
+                            type: 'snare',
+                            posX: 0,
+                            posY: 1
+                        },
+                        {
+                            type: 'hi-hat',
+                            posX: 1,
+                            posY: 2
+                        },
+                        {
+                            type: 'bass',
+                            posX: 2,
+                            posY: 3
+                        }
+                    ]}/>
                 </div>
             );
         } else {
